@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset='utf-8'><title>TikTok Callback</title></head>
+<body style='font-family:sans-serif;text-align:center;padding:60px'>
+<h2>Authorization successful!</h2>
+<p>Copy the code below and paste it into your terminal:</p>
+<div id="code" style='background:#f0f0f0;padding:20px;border-radius:8px;font-family:monospace;font-size:16px;word-break:break-all;margin:20px'></div>
+<button onclick="copyCode()" style='padding:10px 30px;background:#000;color:#fff;border:none;border-radius:8px;cursor:pointer;font-size:16px'>Copy Code</button>
+<script>
+const params = new URLSearchParams(window.location.search);
+const code = params.get('code');
+if (code) {
+    document.getElementById('code').textContent = code;
+} else {
+    document.getElementById('code').textContent = 'No code found - ' + window.location.search;
+}
+function copyCode() {
+    navigator.clipboard.writeText(code);
+    alert('Copied!');
+}
+</script>
+</body>
+</html>
